@@ -247,15 +247,15 @@ void SystemInterface::themXe(){
 		return;
 	}
 	if(co1 && bai1.lay_ma() == ma_bai){
-		cout << (bai1.them() + "Them xe thanh cong");
-		return;
+		if(bai1.them(v)) cout << "Them xe thanh cong";
 	}
 	if(co2 && bai2.lay_ma() == ma_bai){
-		cout << (bai2.them() + "Them xe thanh cong");
+		if(bai2.them(v)) cout << "Them xe thanh cong";
 		return;
 	}
 	if(co3 && bai3.lay_ma() == ma_bai){
-		cout <<(bai3.them() + "Them xe thanh cong");
+        if(bai3.them(v))
+		cout <<"Them xe thanh cong";
 		return;
 	}
 	cout << "Khong tim thay bai xe \n";
@@ -269,7 +269,7 @@ void SystemInterface::xoaBai(){
 	if(co1 && bai1.lay_ma() == ma){
 		bai1 = bai_xe();
 		co1 = false;
-		cout << "Xoa bai xe thanh cong"
+		cout << "Xoa bai xe thanh cong";
 		return;
 	}
 	if(co2 && bai2.lay_ma() == ma){
@@ -291,15 +291,27 @@ void SystemInterface::xoaBai(){
 void SystemInterface::layXe(){
 	int ma_bai, ma_xe;
 	
-	cout << "Nhap ma bai xe:"
-	cinn >> ma_bai;
+	cout << "Nhap ma bai xe:";
+	cin >> ma_bai;
 	
 	cout << "Nhap ma xe can lay: ";
-	cinn >> ma_xe;
+	cin >> ma_xe;
 	
 	if(co1 && bai1.lay_ma() == ma_bai){
-		cout<<(bai1.xoa(ma_xe) + "lay xe thanh cong");
+		if(bai1.xoa(ma_xe)) cout << "Lay xe thanh cong!\n";
+        else cout<<"Khong tim thay xe";
+        return;
 	}
+    if(co2 && bai2.lay_ma() == ma_bai){
+        if(bai2.xoa(ma_xe)) cout<<"Lay xe thanh cong!\n";
+        else cout << "Khong tim thay xe !\n";
+        return;
+    }
+     if(co3 && bai3.lay_ma() == ma_bai){
+        if(bai3.xoa(ma_xe)) cout<<"Lay xe thanh cong!\n";
+        else cout << "Khong tim thay xe !\n";
+        return;
+    }
 }
 
 int main(){
