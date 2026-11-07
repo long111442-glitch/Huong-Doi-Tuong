@@ -314,6 +314,84 @@ void SystemInterface::layXe(){
     }
 }
 
+void SystemInterface::runMenu(){
+	int chon;
+	do{
+		cout << "\nQUAN LY BAI XE\n";
+		cout << "1.Tao bai xe\n";
+		cout << "2. Them phuong tien\n";
+		cout << "3. Xoa bai xe \n";
+		cout << "4. Lay xe ra\n";
+		cout << "5. Hien thi danh sach bai xe\n";
+		cout << "6. Thong ke theo loai xe\n";
+		cout << "Nhap lua chon";
+		cin >> chon;
+		
+		switch(chon){
+			case 1:
+				taoBai();
+				break;
+			case 2:
+				themXe();
+				break;
+				
+			case 3:
+				xoaBai();
+				break;
+				
+			case 4:
+				layXe();
+				break;
+				
+			case 5:
+				if(co1) bai1.hien_thi();
+				if(co2) bai2.hien_thi();
+				if(co3) bai3.hien_thi();
+				
+				if(!co1 && !co2 && !co3) cout<<"Chua co bai xe nao!\n";
+				
+				break;
+			case 6:{
+				string loai;
+				int dem;
+				double tong;
+				
+				cout << "Nhap loai xe can thong ke: ";
+				cin.ignore();
+				getline(cin, loai);
+				
+				cout << "\n KET QUA THONG KE \n";
+				
+				if(co1 && bai1.co_loai(loai, dem, tong))
+				cout << "Bai " << bai1.lay_ma() << ":" << dem
+				<< "xe, phi = " << tong << endl;
+				
+				if(co2 && bai2.co_loai(loai, dem, tong))
+				cout << "Bai " << bai2.lay_ma() << ": " << dem
+				<< "xe, phi = " << tong << endl;
+				
+				if(co3 && bai3.co_loai(loai, dem, tong))
+				cout << "Bai " <<  bai3.lay_ma() << ": " << dem
+				<< "xe, phi = " << tong << endl;
+				
+				break;
+			}
+			case 0:
+				cout << "Ket thuc chuong trinh!\n";
+			break;
+			default:
+				cout << "Lua chon ko hop le!\n";
+			
+		}
+		
+	}while(chon != 0);
+}
+
+
 int main(){
-	
+	SystemInterface ql;
+
+    ql.runMenu();
+
+    return 0;
 }
